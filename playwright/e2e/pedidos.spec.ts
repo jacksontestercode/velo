@@ -1,11 +1,13 @@
 import { test, expect } from '@playwright/test';
 
+import { generateOrderCode } from '../support/helpers';
+
 /// AAA - Arrange, Act, Assert
 
-// Test Data
-const order = 'VLO-MM4DYL';
-
 test('deve consultar um pedido aprovado', async ({ page }) => {
+  // Test Data
+  const order = 'VLO-MM4DYL';
+
   // Arrange
   await page.goto('http://localhost:5173/');
   await expect(page.getByTestId('hero-section').getByRole('heading')).toContainText('Velô Sprint');
@@ -22,7 +24,7 @@ test('deve consultar um pedido aprovado', async ({ page }) => {
 });
 
 test('deve exibir mensagem quando o pedido não é encontrado', async ({ page }) => {
-  const order = 'VLO-ABC123'
+  const order = generateOrderCode();
 
   await page.goto('http://localhost:5173/')
   await expect(
