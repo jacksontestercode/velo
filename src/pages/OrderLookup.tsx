@@ -75,11 +75,14 @@ const OrderLookup = () => {
             <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
               <Search className="w-8 h-8 text-primary" />
             </div>
-            <CardTitle className="text-2xl font-display">Consultar Pedido</CardTitle>
+            <CardTitle className="text-2xl font-display">
+              Consultar Pedido
+            </CardTitle>
             <p className="text-muted-foreground mt-2">
               Digite o número do seu pedido para verificar o status
             </p>
           </CardHeader>
+
           <CardContent>
             <form onSubmit={handleSearch} className="space-y-4">
               <div>
@@ -87,15 +90,16 @@ const OrderLookup = () => {
                 <Input
                   type="text"
                   id="order-id"
+                  data-testid="search-order-id"
                   placeholder="Ex: VLO-ABC123"
                   value={orderId}
                   onChange={(e) => setOrderId(e.target.value)}
                   className="mt-1"
                 />
               </div>
+
               <Button
                 type="submit"
-
                 className="w-full"
                 disabled={!orderId.trim() || isLoading}
               >
@@ -132,7 +136,10 @@ const OrderLookup = () => {
 
         {/* Order Result */}
         {searchedOrder && (
-          <Card className="animate-fade-in" data-testid={`order-result-${searchedOrder.id}`}>
+          <Card
+            className="animate-fade-in"
+            data-testid={`order-result-${searchedOrder.id}`}
+          >
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -144,11 +151,13 @@ const OrderLookup = () => {
                     </p>
                   </div>
                 </div>
+
                 <div
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${searchedOrder.status === 'APROVADO'
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${
+                    searchedOrder.status === 'APROVADO'
                       ? 'bg-green-100 text-green-700'
                       : 'bg-red-100 text-red-700'
-                    }`}
+                  }`}
                 >
                   {searchedOrder.status === 'APROVADO' ? (
                     <CheckCircle className="w-4 h-4" />
@@ -159,11 +168,16 @@ const OrderLookup = () => {
                 </div>
               </div>
             </CardHeader>
+
             <CardContent className="space-y-6">
               {/* Car Image */}
               <div className="bg-secondary/30 rounded-lg p-4">
                 <img
-                  src={carImages[searchedOrder.configuration.exteriorColor][searchedOrder.configuration.wheelType]}
+                  src={
+                    carImages[
+                      searchedOrder.configuration.exteriorColor
+                    ][searchedOrder.configuration.wheelType]
+                  }
                   alt="Velô Sprint"
                   className="w-full max-w-xs mx-auto"
                 />
@@ -177,38 +191,62 @@ const OrderLookup = () => {
                 </div>
                 <div>
                   <p className="text-muted-foreground">Cor</p>
-                  <p className="font-medium">{colorLabels[searchedOrder.configuration.exteriorColor]}</p>
+                  <p className="font-medium">
+                    {
+                      colorLabels[
+                        searchedOrder.configuration.exteriorColor
+                      ]
+                    }
+                  </p>
                 </div>
                 <div>
                   <p className="text-muted-foreground">Interior</p>
-                  <p className="font-medium capitalize">{searchedOrder.configuration.interiorColor.replace('-', ' ')}</p>
+                  <p className="font-medium capitalize">
+                    {searchedOrder.configuration.interiorColor.replace(
+                      '-',
+                      ' '
+                    )}
+                  </p>
                 </div>
                 <div>
                   <p className="text-muted-foreground">Rodas</p>
-                  <p className="font-medium capitalize">{searchedOrder.configuration.wheelType} Wheels</p>
+                  <p className="font-medium capitalize">
+                    {searchedOrder.configuration.wheelType} Wheels
+                  </p>
                 </div>
               </div>
 
               {/* Customer Info */}
               <div className="border-t border-border pt-4">
-                <h4 className="text-sm font-medium text-foreground mb-3">Dados do Cliente</h4>
+                <h4 className="text-sm font-medium text-foreground mb-3">
+                  Dados do Cliente
+                </h4>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <p className="text-muted-foreground">Nome</p>
-                    <p className="font-medium">{searchedOrder.customer.name} {searchedOrder.customer.surname}</p>
+                    <p className="font-medium">
+                      {searchedOrder.customer.name}{' '}
+                      {searchedOrder.customer.surname}
+                    </p>
                   </div>
                   <div>
                     <p className="text-muted-foreground">Email</p>
-                    <p className="font-medium">{searchedOrder.customer.email}</p>
+                    <p className="font-medium">
+                      {searchedOrder.customer.email}
+                    </p>
                   </div>
                   <div>
                     <p className="text-muted-foreground">Loja de Retirada</p>
-                    <p className="font-medium">{searchedOrder.customer.store}</p>
+                    <p className="font-medium">
+                      {searchedOrder.customer.store}
+                    </p>
                   </div>
                   <div>
                     <p className="text-muted-foreground">Data do Pedido</p>
                     <p className="font-medium">
-                      {new Date(searchedOrder.createdAt).toLocaleDateString('pt-BR')}
+                      {new Date(
+                        searchedOrder.createdAt
+                      ).toLocaleDateString('pt-BR')}
                     </p>
                   </div>
                 </div>
@@ -216,17 +254,25 @@ const OrderLookup = () => {
 
               {/* Payment Info */}
               <div className="border-t border-border pt-4">
-                <h4 className="text-sm font-medium text-foreground mb-3">Pagamento</h4>
+                <h4 className="text-sm font-medium text-foreground mb-3">
+                  Pagamento
+                </h4>
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-muted-foreground text-sm">
-                      {searchedOrder.paymentMethod === 'avista' ? 'À Vista' : 'Financiamento 12x'}
+                      {searchedOrder.paymentMethod === 'avista'
+                        ? 'À Vista'
+                        : 'Financiamento 12x'}
                     </p>
-                    {searchedOrder.paymentMethod === 'financiamento' && searchedOrder.installmentValue && (
-                      <p className="text-sm text-muted-foreground">
-                        12x de {formatPrice(searchedOrder.installmentValue)}
-                      </p>
-                    )}
+                    {searchedOrder.paymentMethod === 'financiamento' &&
+                      searchedOrder.installmentValue && (
+                        <p className="text-sm text-muted-foreground">
+                          12x de{' '}
+                          {formatPrice(
+                            searchedOrder.installmentValue
+                          )}
+                        </p>
+                      )}
                   </div>
                   <p className="text-xl font-display font-semibold text-foreground">
                     {formatPrice(searchedOrder.totalPrice)}
