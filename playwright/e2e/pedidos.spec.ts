@@ -2,6 +2,8 @@ import { test, expect } from '@playwright/test'
 
 import { generateOrderCode } from '../support/helpers'
 
+import { OrderLookupPage } from '../support/pages/OrderLookupPage'
+
 // AAA - Arrange, Act, Assert
 
 test.describe('Consulta de Pedido', () => {
@@ -33,8 +35,8 @@ test.describe('Consulta de Pedido', () => {
     }
 
     // Act
-    await page.getByRole('textbox', { name: 'Número do Pedido' }).fill(order.number)
-    await page.getByRole('button', { name: 'Buscar Pedido' }).click()
+    const orderLookupPage = new OrderLookupPage(page)
+    await orderLookupPage.searchOrder(order.number)
 
     // Assert
     // const containerPedido = page.getByRole('paragraph')
@@ -99,8 +101,8 @@ test.describe('Consulta de Pedido', () => {
     }
 
     // Act
-    await page.getByRole('textbox', { name: 'Número do Pedido' }).fill(order.number)
-    await page.getByRole('button', { name: 'Buscar Pedido' }).click()
+    const orderLookupPage = new OrderLookupPage(page)
+    await orderLookupPage.searchOrder(order.number)
 
     // Assert
     // const containerPedido = page.getByRole('paragraph')
@@ -166,8 +168,8 @@ test.describe('Consulta de Pedido', () => {
     }
 
     // Act
-    await page.getByRole('textbox', { name: 'Número do Pedido' }).fill(order.number)
-    await page.getByRole('button', { name: 'Buscar Pedido' }).click()
+    const orderLookupPage = new OrderLookupPage(page)
+    await orderLookupPage.searchOrder(order.number)
 
     // Assert
     // const containerPedido = page.getByRole('paragraph')
@@ -205,14 +207,14 @@ test.describe('Consulta de Pedido', () => {
       - paragraph: ${order.payment}
       - paragraph: /R\\$ \\d+\\.\\d+,\\d+/
       `);
-    
-      const statusBadge = page.getByRole('status').filter({ hasText: order.status })
 
-      await expect(statusBadge).toHaveClass(/bg-amber-100/)
-      await expect(statusBadge).toHaveClass(/text-amber-700/)
-  
-      const statusIcon = statusBadge.locator('svg')
-      await expect(statusIcon).toHaveClass(/lucide-clock/)
+    const statusBadge = page.getByRole('status').filter({ hasText: order.status })
+
+    await expect(statusBadge).toHaveClass(/bg-amber-100/)
+    await expect(statusBadge).toHaveClass(/text-amber-700/)
+
+    const statusIcon = statusBadge.locator('svg')
+    await expect(statusIcon).toHaveClass(/lucide-clock/)
 
   })
 
@@ -221,8 +223,8 @@ test.describe('Consulta de Pedido', () => {
     const order = generateOrderCode()
 
     // Act
-    await page.getByRole('textbox', { name: 'Número do Pedido' }).fill(order)
-    await page.getByRole('button', { name: 'Buscar Pedido' }).click()
+    const orderLookupPage = new OrderLookupPage(page)
+    await orderLookupPage.searchOrder(order)
 
     // Assert
     await expect(page.locator('#root')).toMatchAriaSnapshot(`
