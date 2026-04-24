@@ -7,8 +7,9 @@ export type OrderDetails = {
   status: OrderStatus
   color: string
   wheels: string
-  customer: { name: string; email: string }
+  customer: { name: string; email: string; document: string; phone: string }
   payment: string
+  total_price: string
 }
 
 export function createOrderLookupActions(page: Page) {
@@ -17,11 +18,12 @@ export function createOrderLookupActions(page: Page) {
   const searchButton = page.getByRole('button', { name: 'Buscar Pedido' })
 
   return {
+
     elements: {
       orderInput,
       searchButton
     },
-    
+
     async open() {
       await page.goto('/')
       const title = page.getByTestId('hero-section').getByRole('heading')

@@ -1,0 +1,305 @@
+[dotenv@17.3.1] injecting env (4) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+Running 12 tests using 6 workers
+
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+  x   6 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:131:5 › Checkout › Pagamento e Confirmação › deve criar um pedido com sucesso para pagamento à vista (596ms)
+  x   5 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:101:5 › Checkout › Validações de campos obrigatórios › deve exigir o aceite dos termos ao finalizar com dados válidos (2.5s)
+  x   3 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:35:5 › Checkout › Validações de campos obrigatórios › deve validar limite mínimo de caracteres para Nome e Sobrenome (2.6s)
+  x   4 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:58:5 › Checkout › Validações de campos obrigatórios › deve exibir erro para e-mail com formato inválido (2.3s)
+  x   2 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:79:5 › Checkout › Validações de campos obrigatórios › deve exibir erro para CPF inválido (2.7s)
+  x   1 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:21:5 › Checkout › Validações de campos obrigatórios › deve validar obrigatoriedade de todos os campos em branco (2.7s)
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: 🛡️ auth for agents: https://vestauth.com
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+[dotenv@17.3.1] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[dotenv@17.3.1] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+  x   7 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:164:5 › Checkout › Pagamento e Confirmação › deve aprovar automaticamente o crédito quando o score do CPF for maior que 700 no financiamento (254ms)
+  x  11 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:303:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada igual a 50% (389ms)
+  x   9 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:339:5 › Checkout › Pagamento e Confirmação › deve aprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada mair que 50% (414ms)
+  x   8 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:199:5 › Checkout › Pagamento e Confirmação › deve encaminhar para análise de crédito quando o score do CPF for entre 501 e 700 no financiamento (256ms)
+  x  12 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:233:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento sem entrada (295ms)
+  x  10 [chromium] › playwright\e2e\checkout-validacoes.spec.ts:267:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada menor que 50% (395ms)
+
+
+  1) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:21:5 › Checkout › Validações de campos obrigatórios › deve validar obrigatoriedade de todos os campos em branco 
+
+    TypeError: Cannot read properties of undefined (reading 'alerts')
+
+      15 |       await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible()
+      16 |
+    > 17 |       alerts = app.checkout.elements.alerts
+         |                                      ^
+      18 |     })
+      19 |
+      20 |
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:17:38
+
+    Error Context: test-results\checkout-validacoes-Checko-d3218-e-todos-os-campos-em-branco-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-d3218-e-todos-os-campos-em-branco-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-d3218-e-todos-os-campos-em-branco-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:35:5 › Checkout › Validações de campos obrigatórios › deve validar limite mínimo de caracteres para Nome e Sobrenome 
+
+    TypeError: Cannot read properties of undefined (reading 'alerts')
+
+      15 |       await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible()
+      16 |
+    > 17 |       alerts = app.checkout.elements.alerts
+         |                                      ^
+      18 |     })
+      19 |
+      20 |
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:17:38
+
+    Error Context: test-results\checkout-validacoes-Checko-0d9c1-teres-para-Nome-e-Sobrenome-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-0d9c1-teres-para-Nome-e-Sobrenome-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-0d9c1-teres-para-Nome-e-Sobrenome-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:58:5 › Checkout › Validações de campos obrigatórios › deve exibir erro para e-mail com formato inválido 
+
+    TypeError: Cannot read properties of undefined (reading 'alerts')
+
+      15 |       await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible()
+      16 |
+    > 17 |       alerts = app.checkout.elements.alerts
+         |                                      ^
+      18 |     })
+      19 |
+      20 |
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:17:38
+
+    Error Context: test-results\checkout-validacoes-Checko-5f3b5-e-mail-com-formato-inválido-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-5f3b5-e-mail-com-formato-inválido-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-5f3b5-e-mail-com-formato-inválido-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:79:5 › Checkout › Validações de campos obrigatórios › deve exibir erro para CPF inválido 
+
+    TypeError: Cannot read properties of undefined (reading 'alerts')
+
+      15 |       await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible()
+      16 |
+    > 17 |       alerts = app.checkout.elements.alerts
+         |                                      ^
+      18 |     })
+      19 |
+      20 |
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:17:38
+
+    Error Context: test-results\checkout-validacoes-Checko-f96ab-ibir-erro-para-CPF-inválido-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-f96ab-ibir-erro-para-CPF-inválido-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-f96ab-ibir-erro-para-CPF-inválido-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:101:5 › Checkout › Validações de campos obrigatórios › deve exigir o aceite dos termos ao finalizar com dados válidos 
+
+    TypeError: Cannot read properties of undefined (reading 'alerts')
+
+      15 |       await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible()
+      16 |
+    > 17 |       alerts = app.checkout.elements.alerts
+         |                                      ^
+      18 |     })
+      19 |
+      20 |
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:17:38
+
+    Error Context: test-results\checkout-validacoes-Checko-29d93-finalizar-com-dados-válidos-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-29d93-finalizar-com-dados-válidos-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-29d93-finalizar-com-dados-válidos-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:131:5 › Checkout › Pagamento e Confirmação › deve criar um pedido com sucesso para pagamento à vista 
+
+    TypeError: Cannot read properties of undefined (reading 'open')
+
+      126 |
+      127 |     test.beforeEach(async ({ app }) => {
+    > 128 |       await app.hero.open()
+          |                      ^
+      129 |     })
+      130 |
+      131 |     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:128:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-bd750-esso-para-pagamento-à-vista-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-bd750-esso-para-pagamento-à-vista-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:164:5 › Checkout › Pagamento e Confirmação › deve aprovar automaticamente o crédito quando o score do CPF for maior que 700 no financiamento 
+
+    TypeError: Cannot read properties of undefined (reading 'open')
+
+      126 |
+      127 |     test.beforeEach(async ({ app }) => {
+    > 128 |       await app.hero.open()
+          |                      ^
+      129 |     })
+      130 |
+      131 |     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:128:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-c853d-or-que-700-no-financiamento-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-c853d-or-que-700-no-financiamento-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:199:5 › Checkout › Pagamento e Confirmação › deve encaminhar para análise de crédito quando o score do CPF for entre 501 e 700 no financiamento 
+
+    TypeError: Cannot read properties of undefined (reading 'open')
+
+      126 |
+      127 |     test.beforeEach(async ({ app }) => {
+    > 128 |       await app.hero.open()
+          |                      ^
+      129 |     })
+      130 |
+      131 |     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:128:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-385a1--501-e-700-no-financiamento-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-385a1--501-e-700-no-financiamento-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:233:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento sem entrada 
+
+    TypeError: Cannot read properties of undefined (reading 'open')
+
+      126 |
+      127 |     test.beforeEach(async ({ app }) => {
+    > 128 |       await app.hero.open()
+          |                      ^
+      129 |     })
+      130 |
+      131 |     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:128:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-3f353-o-financiamento-sem-entrada-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-3f353-o-financiamento-sem-entrada-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:267:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada menor que 50% 
+
+    TypeError: Cannot read properties of undefined (reading 'open')
+
+      126 |
+      127 |     test.beforeEach(async ({ app }) => {
+    > 128 |       await app.hero.open()
+          |                      ^
+      129 |     })
+      130 |
+      131 |     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:128:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-49d26-o-com-entrada-menor-que-50--chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-49d26-o-com-entrada-menor-que-50--chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:303:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada igual a 50% 
+
+    TypeError: Cannot read properties of undefined (reading 'open')
+
+      126 |
+      127 |     test.beforeEach(async ({ app }) => {
+    > 128 |       await app.hero.open()
+          |                      ^
+      129 |     })
+      130 |
+      131 |     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:128:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-52155-nto-com-entrada-igual-a-50--chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-52155-nto-com-entrada-igual-a-50--chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [chromium] › playwright\e2e\checkout-validacoes.spec.ts:339:5 › Checkout › Pagamento e Confirmação › deve aprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada mair que 50% 
+
+    TypeError: Cannot read properties of undefined (reading 'open')
+
+      126 |
+      127 |     test.beforeEach(async ({ app }) => {
+    > 128 |       await app.hero.open()
+          |                      ^
+      129 |     })
+      130 |
+      131 |     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
+        at c:\automatizai\velo\playwright\e2e\checkout-validacoes.spec.ts:128:22
+
+    attachment #1: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-validacoes-Checko-96319-to-com-entrada-mair-que-50--chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-validacoes-Checko-96319-to-com-entrada-mair-que-50--chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12 failed
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:21:5 › Checkout › Validações de campos obrigatórios › deve validar obrigatoriedade de todos os campos em branco 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:35:5 › Checkout › Validações de campos obrigatórios › deve validar limite mínimo de caracteres para Nome e Sobrenome 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:58:5 › Checkout › Validações de campos obrigatórios › deve exibir erro para e-mail com formato inválido 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:79:5 › Checkout › Validações de campos obrigatórios › deve exibir erro para CPF inválido 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:101:5 › Checkout › Validações de campos obrigatórios › deve exigir o aceite dos termos ao finalizar com dados válidos 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:131:5 › Checkout › Pagamento e Confirmação › deve criar um pedido com sucesso para pagamento à vista 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:164:5 › Checkout › Pagamento e Confirmação › deve aprovar automaticamente o crédito quando o score do CPF for maior que 700 no financiamento 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:199:5 › Checkout › Pagamento e Confirmação › deve encaminhar para análise de crédito quando o score do CPF for entre 501 e 700 no financiamento 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:233:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento sem entrada 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:267:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada menor que 50% 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:303:5 › Checkout › Pagamento e Confirmação › deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada igual a 50% 
+    [chromium] › playwright\e2e\checkout-validacoes.spec.ts:339:5 › Checkout › Pagamento e Confirmação › deve aprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada mair que 50% 

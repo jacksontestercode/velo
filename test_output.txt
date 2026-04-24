@@ -1,0 +1,8 @@
+[dotenv@17.3.1] injecting env (4) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+
+Running 1 test using 1 worker
+
+[1A[2K[dotenv@17.3.1] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+[1A[2K[1/1] [chromium] › playwright\e2e\checkout-validacoes.spec.ts:33:3 › Checkout - validações › deve validar limite mínimo de caracteres para Nome e Sobrenome
+[1A[2K  1 passed (10.4s)
