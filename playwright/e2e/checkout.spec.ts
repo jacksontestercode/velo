@@ -35,9 +35,9 @@ test.describe('Checkout', () => {
     test('deve validar limite mínimo de caracteres para Nome e Sobrenome', async ({ app }) => {
 
       const customer = {
-        name: 'Jackson',
-        lastname: 'Mendes',
-        email: 'jackson.mendes@test.com',
+        name: 'A',
+        lastname: 'B',
+        email: 'papito@teste.com',
         document: '00000014141',
         phone: '(11) 99999-9999'
       }
@@ -57,9 +57,9 @@ test.describe('Checkout', () => {
 
     test('deve exibir erro para e-mail com formato inválido', async ({ app }) => {
       const customer = {
-        name: 'Jackson',
-        lastname: 'Mendes',
-        email: 'jackson.mendes@',
+        name: 'Fernando',
+        lastname: 'Papito',
+        email: 'papito@.com',
         document: '00000014141',
         phone: '(11) 99999-9999'
       }
@@ -79,9 +79,9 @@ test.describe('Checkout', () => {
     test('deve exibir erro para CPF inválido', async ({ app }) => {
 
       const customer = {
-        name: 'Jackson',
-        lastname: 'Mendes',
-        email: 'jackson.mendes@test.com',
+        name: 'Fernando',
+        lastname: 'Papito',
+        email: 'papito@test.com',
         document: '00000014199',
         phone: '(11) 99999-9999'
       }
@@ -101,9 +101,9 @@ test.describe('Checkout', () => {
     test('deve exigir o aceite dos termos ao finalizar com dados válidos', async ({ app }) => {
 
       const customer = {
-        name: 'Jackson',
-        lastname: 'Mendes',
-        email: 'jackson.mendes@test.com',
+        name: 'Fernando',
+        lastname: 'Papito',
+        email: 'papito@test.com',
         document: '00000014199',
         phone: '(11) 99999-9999'
       }
@@ -131,13 +131,13 @@ test.describe('Checkout', () => {
     test('deve criar um pedido com sucesso para pagamento à vista', async ({ app }) => {
 
       const customer = {
-        name: 'Jackson',
-        lastname: 'Mendes',
-        email: 'jackson.mendes@teste.com',
+        name: 'Fernando',
+        lastname: 'Papito',
+        email: 'papito@teste.com',
         document: '05366127068',
         phone: '(11) 99999-9999',
         store: 'Velô Paulista',
-        paymentMethod: 'Á Vista',
+        paymentMethod: 'À Vista',
         totalPrice: 'R$ 40.000,00'
       }
 
@@ -227,7 +227,7 @@ test.describe('Checkout', () => {
       await app.checkout.submit()
 
       // Assert
-      await app.checkout.expectResult('Crédito Reprovado')
+      await app.checkout.expectResult('Pedido em Análise!')
     })
 
     test('deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento sem entrada', async ({ app }) => {
@@ -261,7 +261,7 @@ test.describe('Checkout', () => {
       await app.checkout.submit()
 
       // Assert
-      await app.checkout.expectResult('Crédito Reprovado')
+      await app.checkout.expectResult('Pedido Reprovado!')
     })
 
     test('deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada menor que 50%', async ({ app }) => {
@@ -297,7 +297,7 @@ test.describe('Checkout', () => {
       await app.checkout.submit()
 
       // Assert
-      await app.checkout.expectResult('Crédito Reprovado')
+      await app.checkout.expectResult('Pedido Reprovado!')
     })
 
     test('deve reprovar o crédito quando o score do CPF for menor ou igual a 500 no financiamento com entrada igual a 50%', async ({ app }) => {
