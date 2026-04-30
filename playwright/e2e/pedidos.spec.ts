@@ -32,7 +32,7 @@ test.describe('Checkout - validações', () => {
 
   test('deve validar limite mínimo de caracteres para Nome e Sobrenome', async ({ page }) => {
     const nome = page.getByTestId('checkout-name');
-    const sobrenome = page.getByTestId('checkout-surname');
+    const sobrenome = page.getByTestId('checkout-lastname');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
     const nameAlert = page.locator('//label[text()="Nome"]/..//p');
@@ -52,7 +52,7 @@ test.describe('Checkout - validações', () => {
 
   test('deve exibir erro para e-mail com formato inválido', async ({ page }) => {
     const nome = page.getByTestId('checkout-name');
-    const sobrenome = page.getByTestId('checkout-surname');
+    const sobrenome = page.getByTestId('checkout-lastname');
     const email = page.getByTestId('checkout-email');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
@@ -71,7 +71,7 @@ test.describe('Checkout - validações', () => {
   });
 
   test('deve exibir erro para CPF inválido', async ({ page }) => {
-    const cpf = page.getByTestId('checkout-cpf');
+    const cpf = page.getByTestId('checkout-document');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
     const cpfAlert = page.locator('//label[text()="CPF"]/..//p');
@@ -89,7 +89,7 @@ test.describe('Checkout - validações', () => {
   test('deve exigir o aceite dos termos ao finalizar com dados válidos', async ({ page }) => {
     const email = page.getByTestId('checkout-email');
     const telefone = page.getByTestId('checkout-phone');
-    const cpf = page.getByTestId('checkout-cpf');
+    const cpf = page.getByTestId('checkout-document');
     const loja = page.getByTestId('checkout-store');
     const termos = page.getByTestId('checkout-terms');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });

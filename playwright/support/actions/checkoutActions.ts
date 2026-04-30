@@ -31,10 +31,10 @@ export function createCheckoutActions(page: Page) {
       cpf: string
     }) {
       await page.getByTestId('checkout-name').fill(data.name)
-      await page.getByTestId('checkout-surname').fill(data.surname)
+      await page.getByTestId('checkout-lastname').fill(data.surname)
       await page.getByTestId('checkout-email').fill(data.email)
       await page.getByTestId('checkout-phone').fill(data.phone)
-      await page.getByTestId('checkout-cpf').fill(data.cpf)
+      await page.getByTestId('checkout-document').fill(data.cpf)
     },
 
     async fillCustomerlData(data: {
@@ -45,10 +45,10 @@ export function createCheckoutActions(page: Page) {
       phone: string
     }) {
       await page.getByTestId('checkout-name').fill(data.name)
-      await page.getByTestId('checkout-surname').fill(data.lastname)
+      await page.getByTestId('checkout-lastname').fill(data.lastname)
       await page.getByTestId('checkout-email').fill(data.email)
       await page.getByTestId('checkout-phone').fill(data.phone)
-      await page.getByTestId('checkout-cpf').fill(data.document)
+      await page.getByTestId('checkout-document').fill(data.document)
     },
 
     async selectStore(storeName: string) {
