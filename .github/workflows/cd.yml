@@ -24,16 +24,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'yarn'
-
-      - name: Enable Corepack
-        run: corepack enable
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Run unit tests
-        run: yarn test
+        run: npm run test
 
   build-and-deploy:
     name: Build & Deploy Vercel Preview
@@ -50,29 +47,26 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'yarn'
-
-      - name: Enable Corepack
-        run: corepack enable
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Pull Vercel Config
         run: |
-          yarn vercel pull --yes \
+          npx vercel pull --yes \
           --environment=preview \
           --token=$VERCEL_TOKEN \
           --org-id=$VERCEL_ORG_ID \
           --project-id=$VERCEL_PROJECT_ID
 
       - name: Build Vercel
-        run: yarn vercel build --token=$VERCEL_TOKEN
+        run: npx vercel build --token=$VERCEL_TOKEN
 
       - name: Deploy preview
         id: deploy
         run: |
-          URL=$(yarn --silent vercel deploy --prebuilt \
+          URL=$(npx vercel deploy --prebuilt \
           --target=preview \
           --token=$VERCEL_TOKEN)
           echo "deployment-url=$URL" >> $GITHUB_OUTPUT
@@ -90,19 +84,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'yarn'
-
-      - name: Enable Corepack
-        run: corepack enable
+          cache: 'npm'
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
 
       - name: Install Playwright Browsers
-        run: yarn playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium
 
       - name: Run E2E Regression Tests
-        run: yarn playwright test
+        run: npx playwright test
         env:
           BASE_URL: ${{ needs.build-and-deploy.outputs.deployment-url }}
 
