@@ -38,7 +38,7 @@ jobs:
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # 5. Executa os testes unitários com Vitest
       - name: Run unit tests
@@ -68,7 +68,7 @@ jobs:
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # 5. Obter as configurações do vercel
       - name: Pull Vercel Config
@@ -124,7 +124,7 @@ jobs:
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # 5. Instalação do Chromium
       - name: Install Playwright Browser
@@ -189,7 +189,7 @@ jobs:
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # 5. Obter as configurações do Vercel para produção
       - name: Pull Vercel Config
