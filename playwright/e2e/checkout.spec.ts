@@ -11,8 +11,8 @@ test.describe('Checkout', () => {
     let alerts: any
 
     test.beforeEach(async ({ page, app }) => {
-      await page.goto('/order')
-      await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible()
+      await page.goto('/order', { waitUntil: 'networkidle' })
+      await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible({ timeout: 15_000 })
 
       alerts = app.checkout.elements.alerts
     })

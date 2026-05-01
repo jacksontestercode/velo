@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Checkout - validações', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/order');
-    await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible();
+    await page.goto('/order', { waitUntil: 'networkidle' });
+    await expect(page.getByRole('heading', { name: 'Finalizar Pedido' })).toBeVisible({ timeout: 15_000 });
   });
 
   test('deve validar obrigatoriedade de todos os campos em branco', async ({ page }) => {

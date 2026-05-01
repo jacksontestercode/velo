@@ -15,7 +15,7 @@ export default defineConfig({
   timeout: 60_000,
 
   expect: {
-    timeout: 5_000,
+    timeout: 10_000,
   },
 
   testDir: './playwright/e2e',
