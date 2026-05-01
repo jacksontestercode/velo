@@ -77,6 +77,10 @@ jobs:
           --environment=preview \
           --token=$VERCEL_TOKEN \
           --scope=$VERCEL_SCOPE
+          yarn vercel env pull .env \
+          --environment=preview \
+          --token=$VERCEL_TOKEN \
+          --scope=$VERCEL_SCOPE
       
       # 6. Build para o Vercel
       - name: Build Vercel
@@ -95,7 +99,7 @@ jobs:
             --no-color \
             --format=json)
           echo "$DEPLOY_OUTPUT" > /tmp/vercel-deploy.json
-          URL=$(node -e "const fs = require('fs'); const out = fs.readFileSync('/tmp/vercel-deploy.json', 'utf8'); const parsed = JSON.parse(out); if (!parsed.url) throw new Error('No url found in vercel deploy output'); console.log(parsed.url)")
+          URL=$(node -e "const fs = require('fs'); const out = fs.readFileSync('/tmp/vercel-deploy.json', 'utf8'); const parsed = JSON.parse(out); if (!parsed.url) throw new Error('No url found in vercel deploy output'); console.log(parsed.url.startsWith('http') ? parsed.url : 'https://' + parsed.url)")
           echo "deployment-url=$URL" >> $GITHUB_OUTPUT
 
   e2e-tests:
