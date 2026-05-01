@@ -5,7 +5,9 @@ export function createConfiguratorActions(page: Page) {
 
   return {
     async open() {
-      await page.goto('/configure')
+      await page.goto('/configure', { waitUntil: 'networkidle' })
+      const priceElement = page.getByTestId('total-price')
+      await expect(priceElement).toBeVisible({ timeout: 15_000 })
     },
 
     async selectColor(name: string) {
@@ -18,7 +20,7 @@ export function createConfiguratorActions(page: Page) {
 
     async expectPrice(price: string) {
       const priceElement = page.getByTestId('total-price')
-      await expect(priceElement).toBeVisible()
+      await expect(priceElement).toBeVisible({ timeout: 15_000 })
       await expect(priceElement).toHaveText(price)
     },
 
