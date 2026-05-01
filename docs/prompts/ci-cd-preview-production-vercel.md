@@ -1,7 +1,3 @@
-Este é o meu workflow atual:
-
-Agora aplique a solução considerando esse arquivo.
-
 Você é um especialista em CI/CD com Vercel e ambientes isolados.
 
 Contexto:
