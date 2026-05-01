@@ -9,13 +9,13 @@ test.describe('Checkout - validações', () => {
   test('deve validar obrigatoriedade de todos os campos em branco', async ({ page }) => {
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
-    const nameAlert = page.locator('//label[text()="Nome"]/..//p');
-    const surnameAlert = page.locator('//label[text()="Sobrenome"]/..//p');
-    const emailAlert = page.locator('//label[text()="Email"]/..//p');
-    const phoneAlert = page.locator('//label[text()="Telefone"]/..//p');
-    const cpfAlert = page.locator('//label[text()="CPF"]/..//p');
-    const storeAlert = page.locator('//label[text()="Loja para Retirada"]/..//p');
-    const termsAlert = page.locator('//label[@for="terms"]/following-sibling::p');
+    const nameAlert = page.getByTestId('error-name');
+    const surnameAlert = page.getByTestId('error-lastname');
+    const emailAlert = page.getByTestId('error-email');
+    const phoneAlert = page.getByTestId('error-phone');
+    const cpfAlert = page.getByTestId('error-document');
+    const storeAlert = page.getByTestId('error-store');
+    const termsAlert = page.getByTestId('error-terms');
 
     // Act
     await submit.click();
@@ -35,8 +35,8 @@ test.describe('Checkout - validações', () => {
     const sobrenome = page.getByTestId('checkout-lastname');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
-    const nameAlert = page.locator('//label[text()="Nome"]/..//p');
-    const surnameAlert = page.locator('//label[text()="Sobrenome"]/..//p');
+    const nameAlert = page.getByTestId('error-name');
+    const surnameAlert = page.getByTestId('error-lastname');
 
     // Arrange
     await nome.fill('A');
@@ -56,7 +56,7 @@ test.describe('Checkout - validações', () => {
     const email = page.getByTestId('checkout-email');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
-    const emailAlert = page.locator('//label[text()="Email"]/..//p');
+    const emailAlert = page.getByTestId('error-email');
 
     // Arrange
     await nome.fill('João');
@@ -74,7 +74,7 @@ test.describe('Checkout - validações', () => {
     const cpf = page.getByTestId('checkout-document');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
-    const cpfAlert = page.locator('//label[text()="CPF"]/..//p');
+    const cpfAlert = page.getByTestId('error-document');
 
     // Arrange
     await cpf.fill('123');
@@ -94,7 +94,7 @@ test.describe('Checkout - validações', () => {
     const termos = page.getByTestId('checkout-terms');
     const submit = page.getByRole('button', { name: 'Confirmar Pedido' });
 
-    const termsAlert = page.locator('//label[@for="terms"]/following-sibling::p');
+    const termsAlert = page.getByTestId('error-terms');
 
     // Arrange
     await email.fill('joao.silva@email.com');
