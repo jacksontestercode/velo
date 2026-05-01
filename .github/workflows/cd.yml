@@ -32,17 +32,17 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      # 3. Habilita o Corepack para gerenciamento do Yarn
+      # 3. Habilita o Corepack para gerenciamento de pacotes
       - name: Enable Corepack
         run: corepack enable
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       # 5. Executa os testes unitários com Vitest
       - name: Run unit tests
-        run: yarn test
+        run: npm test
   
   build-and-deploy:
     name: Build & Deploy Vercel Preview
@@ -62,29 +62,29 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      # 3. Habilita o Corepack para gerenciamento do Yarn
+      # 3. Habilita o Corepack para gerenciamento de pacotes
       - name: Enable Corepack
         run: corepack enable
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       # 5. Obter as configurações do vercel
       - name: Pull Vercel Config
         run: |
-          yarn vercel pull --yes \
+          npx vercel pull --yes \
           --environment=preview \
           --token=$VERCEL_TOKEN \
           --scope=$VERCEL_SCOPE
-          yarn vercel env pull .env \
+          npx vercel env pull .env \
           --environment=preview \
           --token=$VERCEL_TOKEN \
           --scope=$VERCEL_SCOPE
       
       # 6. Build para o Vercel
       - name: Build Vercel
-        run: yarn vercel build --token=$VERCEL_TOKEN
+        run: npx vercel build --token=$VERCEL_TOKEN
 
       # 7. Deploy preview no vercel
       - name: Deploy preview
@@ -118,13 +118,13 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      # 3. Habilita o Corepack para gerenciamento do Yarn
+      # 3. Habilita o Corepack para gerenciamento de pacotes
       - name: Enable Corepack
         run: corepack enable
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       # 5. Instalação do Chromium
       - name: Install Playwright Browser
@@ -183,30 +183,30 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      # 3. Habilita o Corepack para gerenciamento do Yarn
+      # 3. Habilita o Corepack para gerenciamento de pacotes
       - name: Enable Corepack
         run: corepack enable
 
       # 4. Instala as dependências do projeto
       - name: Install dependencies
-        run: yarn install
+        run: npm ci
 
       # 5. Obter as configurações do Vercel para produção
       - name: Pull Vercel Config
         run: |
-          yarn vercel pull --yes \
+          npx vercel pull --yes \
           --environment=production \
           --token=$VERCEL_TOKEN \
           --scope=$VERCEL_SCOPE
       
       # 6. Build para o Vercel
       - name: Build Vercel
-        run: yarn vercel build --prod --token=$VERCEL_TOKEN
+        run: npx vercel build --prod --token=$VERCEL_TOKEN
 
       # 7. Deploy para produção no Vercel
       - name: Deploy production
         run: |
-          yarn --silent vercel deploy --prebuilt --prod \
+          npx vercel deploy --prebuilt --prod \
           --token=$VERCEL_TOKEN \
           --scope=$VERCEL_SCOPE
 
