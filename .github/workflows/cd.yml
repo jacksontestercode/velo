@@ -92,7 +92,8 @@ jobs:
             --token=$VERCEL_TOKEN \
             --scope=$VERCEL_SCOPE \
             --confirm \
-            --json)
+            --no-color \
+            --format=json)
           echo "$DEPLOY_OUTPUT" > /tmp/vercel-deploy.json
           URL=$(node -e "const fs = require('fs'); const out = fs.readFileSync('/tmp/vercel-deploy.json', 'utf8'); const parsed = JSON.parse(out); if (!parsed.url) throw new Error('No url found in vercel deploy output'); console.log(parsed.url)")
           echo "deployment-url=$URL" >> $GITHUB_OUTPUT
@@ -125,7 +126,25 @@ jobs:
       - name: Install Playwright Browser
         run: npx playwright install --with-deps chromium
 
-      # 6. Execução dos Testes de Regressão
+      # 6. Aguarda a URL do preview ficar disponível
+      - name: Wait for preview site
+        run: |
+          set -e
+          echo "Waiting for preview site: $BASE_URL"
+          for i in $(seq 1 24); do
+            if curl -fsS "$BASE_URL" >/dev/null 2>&1; then
+              echo "Preview site is available"
+              exit 0
+            fi
+            echo "Attempt $i: preview not ready yet"
+            sleep 5
+          done
+          echo "Preview site did not become available: $BASE_URL"
+          exit 1
+        env:
+          BASE_URL: ${{ needs.build-and-deploy.outputs.deployment-url }}
+
+      # 7. Execução dos Testes de Regressão
       - name: Run E2E Regression Tests
         run: npx playwright test --config=playwright.config.ts
         env:
